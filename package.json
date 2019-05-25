@@ -1,0 +1,27 @@
+{
+  "name": "parcel",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.0.0",
+    "@material-ui/icons": "^4.0.0",
+    "babel-plugin-transform-class-properties": "latest",
+    "babel-preset-env": "latest",
+    "babel-preset-react": "latest",
+    "dashboard": "^0.0.1",
+    "parcel-bundler": "latest",
+    "prop-types": "^15.5.4",
+    "react": "^16.8",
+    "react-ace": "^6.5.0",
+    "react-dom": "^16.8",
+    "react-inspector": "^3.0.2",
+    "react-liquid": "^1.2.0"
+  },
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3"
+  }
+}
