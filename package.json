@@ -17,6 +17,7 @@
     "react-dom": "^16.0.0",
     "react-inspector": "^3.0.2",
     "react-liquid": "^1.2.0",
+    "react-router-dom": "^5.0.1",
     "recharts": "^1.6.2"
   },
   "scripts": {
