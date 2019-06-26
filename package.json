@@ -10,12 +10,14 @@
     "babel-preset-react": "latest",
     "dashboard": "^0.0.1",
     "parcel-bundler": "latest",
+    "predicator": "file:../predicator-js",
     "prop-types": "^15.5.4",
-    "react": "^16.8",
+    "react": "^16.0.0",
     "react-ace": "^6.5.0",
-    "react-dom": "^16.8",
+    "react-dom": "^16.0.0",
     "react-inspector": "^3.0.2",
-    "react-liquid": "^1.2.0"
+    "react-liquid": "^1.2.0",
+    "recharts": "^1.6.2"
   },
   "scripts": {
     "start": "parcel src/index.html",

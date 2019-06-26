@@ -5,40 +5,26 @@ import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 
 import LiquidEditor from './components/LiquidEditor';
+import PredicatorEditor from './components/PredicatorEditor';
 
 import Dashboard from '../../dashboard/Dashboard';
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI
-      </Link>
-      {' team.'}
-    </Typography>
-  );
-}
 
-/*
-export default function App() {
-  return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Parcel v4-beta example
-        </Typography>
-        <MadeWithLove />
-      </Box>
-    </Container>
-  );
-}
-*/
+const contexts = [
+  {name: 'Member Bob', data: {member:{name: 'Bob'}, age: 13}},
+  {name: 'Member Alice', data: {member:{name: 'Alice'}, age: 20}}
+]
 
 export default function App() {
   return (
     <div>
-      <LiquidEditor />
+      <LiquidEditor
+        template="Hello {{ member.name }}"
+        contexts={contexts} />
+
+      <PredicatorEditor
+        template="true or true"
+        contexts={contexts} />
     </div>
   );
 }
