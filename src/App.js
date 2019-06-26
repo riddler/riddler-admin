@@ -18,7 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import { Route, Link as RouterLink } from 'react-router-dom';
+import { Switch, Route, Link as RouterLink } from 'react-router-dom';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -140,6 +140,48 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function Dashboard() {
+  const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  return (
+    <Container maxWidth="lg" className={classes.container}>
+      <Grid container spacing={3}>
+        {/* Chart */}
+        <Grid item xs={12} md={8} lg={9}>
+          <Paper className={fixedHeightPaper}>
+            Chart
+          </Paper>
+        </Grid>
+        {/* Recent Deposits */}
+        <Grid item xs={12} md={4} lg={3}>
+          <Paper className={fixedHeightPaper}>
+            Deposits
+          </Paper>
+        </Grid>
+        {/* Recent Orders */}
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            Orders
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
+  )
+}
+
+function Predicates() {
+  return (
+    <h1>Predicates</h1>
+  )
+}
+
+function NoMatch() {
+  return (
+    <h1>Doh! No match for that route!</h1>
+  )
+}
+
 export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -149,7 +191,6 @@ export default function App() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -191,28 +232,11 @@ export default function App() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                Chart
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                Deposits
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                Orders
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/predicates" component={Predicates} />
+          <Route component={NoMatch} />
+        </Switch>
       </main>
     </div>
   );
