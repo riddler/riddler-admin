@@ -27,6 +27,9 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
+import './i18n';
+import { useTranslation } from 'react-i18next';
+
 
 class ListItemLink extends React.Component {
   renderLink = React.forwardRef((itemProps, ref) => (
@@ -51,14 +54,6 @@ ListItemLink.propTypes = {
   primary: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
 };
-
-
-export const mainNavItems = (
-  <div>
-    <ListItemLink to="/" primary="Dashboard" icon={<DashboardIcon />} />
-    <ListItemLink to="/predicates" primary="Predicates" icon={<AssignmentIcon />} />
-  </div>
-)
 
 
 const drawerWidth = 240;
@@ -171,8 +166,9 @@ function Dashboard() {
 }
 
 function Predicates() {
+  const { t } = useTranslation();
   return (
-    <h1>Predicates</h1>
+    <h1>{t("predicatesTitle")}</h1>
   )
 }
 
@@ -184,6 +180,7 @@ function NoMatch() {
 
 export default function App() {
   const classes = useStyles();
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -206,7 +203,7 @@ export default function App() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {t("dashboardTitle")}
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -228,7 +225,10 @@ export default function App() {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainNavItems}</List>
+        <List>
+          <ListItemLink to="/" primary={t("dashboardTitle")} icon={<DashboardIcon />} />
+          <ListItemLink to="/predicates" primary={t("predicatesTitle")} icon={<AssignmentIcon />} />
+        </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
